@@ -588,10 +588,6 @@ class PlayState extends MusicBeatState
 
 					// defaultCamZoom = 0.9;
 
-					var bgSky = new FlxSprite().loadGraphic(Paths.image('weeb/weebSky','week6'));
-					bgSky.scrollFactor.set(0.1, 0.1);
-					add(bgSky);
-
 					var repositionShit = -200;
 
 					var bgSchool:FlxSprite = new FlxSprite(repositionShit, 0).loadGraphic(Paths.image('weeb/weebSchool','week6'));
@@ -621,17 +617,14 @@ class PlayState extends MusicBeatState
 					treeLeaves.scrollFactor.set(0.85, 0.85);
 					add(treeLeaves);
 
-					var widShit = Std.int(bgSky.width * 6);
+					var widShit = Std.int(bgSchool.width / 6);
 
-					bgSky.setGraphicSize(widShit);
-					bgSchool.setGraphicSize(widShit);
 					bgStreet.setGraphicSize(widShit);
 					bgTrees.setGraphicSize(Std.int(widShit * 1.4));
 					fgTrees.setGraphicSize(Std.int(widShit * 0.8));
 					treeLeaves.setGraphicSize(widShit);
 
 					fgTrees.updateHitbox();
-					bgSky.updateHitbox();
 					bgSchool.updateHitbox();
 					bgStreet.updateHitbox();
 					bgTrees.updateHitbox();
@@ -797,8 +790,7 @@ class PlayState extends MusicBeatState
 
 		var camPos:FlxPoint = new FlxPoint(dad.getGraphicMidpoint().x, dad.getGraphicMidpoint().y);
 
-		switch (SONG.player2)
-		{
+		switch (SONG.player2) {
 			case 'gf':
 				dad.setPosition(gf.x, gf.y);
 				gf.visible = false;
@@ -827,24 +819,16 @@ class PlayState extends MusicBeatState
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'senpai-angry':
 				if(FlxG.save.data.distractions) {
-					// trailArea.scrollFactor.set();
 					var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
-					// evilTrail.changeValuesEnabled(false, false, false, false);
-					// evilTrail.changeGraphic();
 					add(evilTrail);
-					// evilTrail.scrollFactor.set(1.1, 1.1);
 				}
 				dad.x += 150;
 				dad.y += 360;
 				camPos.set(dad.getGraphicMidpoint().x + 300, dad.getGraphicMidpoint().y);
 			case 'spirit':
-				if (FlxG.save.data.distractions) {
-					// trailArea.scrollFactor.set();
+				if(FlxG.save.data.distractions) {
 					var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
-					// evilTrail.changeValuesEnabled(false, false, false, false);
-					// evilTrail.changeGraphic();
 					add(evilTrail);
-					// evilTrail.scrollFactor.set(1.1, 1.1);
 				}
 				dad.x -= 150;
 				dad.y += 100;
@@ -878,20 +862,27 @@ class PlayState extends MusicBeatState
 				gf.x += 180;
 				gf.y += 300;
 			case 'schoolEvil':
-				if(FlxG.save.data.distractions){
-				// trailArea.scrollFactor.set();
-				var evilTrail = new FlxTrail(dad, null, 4, 24, 0.3, 0.069);
-				// evilTrail.changeValuesEnabled(false, false, false, false);
-				// evilTrail.changeGraphic()
-				add(evilTrail);
-				// evilTrail.scrollFactor.set(1.1, 1.1);
-				}
-
 
 				boyfriend.x += 200;
 				boyfriend.y += 220;
 				gf.x += 180;
 				gf.y += 300;
+		}
+		switch SONG.player1
+		{
+			case 'senpai-angry':
+				if (FlxG.save.data.distractions)
+				{
+					var evilTrail = new FlxTrail(boyfriend, null, 4, 24, 0.3, 0.069);
+					add(evilTrail);
+				}
+				boyfriend.y += 360;
+			case 'spirit':
+				if (FlxG.save.data.distractions)
+				{
+					var evilTrail = new FlxTrail(boyfriend, null, 4, 24, 0.3, 0.069);
+					add(evilTrail);
+				}
 		}
 
 		if (!PlayStateChangeables.Optimize)
