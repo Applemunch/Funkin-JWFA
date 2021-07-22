@@ -17,3 +17,6 @@ Winter Horrorland:monster-christmas:5
 Senpai:senpai:6
 Roses:senpai:6
 Thorns:spirit:6
+Adventure:senpai:7
+Doomed:senpai:7
+Bloodshed:senpai-angry:7

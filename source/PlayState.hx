@@ -359,11 +359,11 @@ class PlayState extends MusicBeatState
 					"If you can beat me here...",
 					"Only then I will even CONSIDER letting you\ndate my daughter!"
 				];
-			case 'senpai':
+			case 'senpai': // | 'adventure':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('senpai/senpaiDialogue'));
-			case 'roses':
+			case 'roses': // | 'doomed':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('roses/rosesDialogue'));
-			case 'thorns':
+			case 'thorns': // | 'bloodshed':
 				dialogue = CoolUtil.coolTextFile(Paths.txt('thorns/thornsDialogue'));
 		}
 
@@ -378,6 +378,7 @@ class PlayState extends MusicBeatState
 				case 4: stageCheck = 'limo';
 				case 5: if (songLowercase == 'winter-horrorland') {stageCheck = 'mallEvil';} else {stageCheck = 'mall';}
 				case 6: if (songLowercase == 'thorns') {stageCheck = 'schoolEvil';} else {stageCheck = 'school';}
+				case 7: stageCheck = 'schoolEvil';
 				//i should check if its stage (but this is when none is found in chart anyway)
 			}
 		} else {stageCheck = SONG.stage;}
@@ -870,13 +871,15 @@ class PlayState extends MusicBeatState
 		}
 		switch SONG.player1
 		{
+			case 'senpai':
+				boyfriend.y -= 300;
 			case 'senpai-angry':
 				if (FlxG.save.data.distractions)
 				{
 					var evilTrail = new FlxTrail(boyfriend, null, 4, 24, 0.3, 0.069);
 					add(evilTrail);
 				}
-				boyfriend.y += 360;
+				boyfriend.y -= 300;
 			case 'spirit':
 				if (FlxG.save.data.distractions)
 				{
@@ -1110,12 +1113,12 @@ class PlayState extends MusicBeatState
 							});
 						});
 					});
-				case 'senpai':
+				case 'senpai': // | 'adventure':
 					schoolIntro(doof);
-				case 'roses':
+				case 'roses': // | 'doomed':
 					FlxG.sound.play(Paths.sound('ANGRY'));
 					schoolIntro(doof);
-				case 'thorns':
+				case 'thorns': // | 'bloodshed':
 					schoolIntro(doof);
 				default:
 					startCountdown();
