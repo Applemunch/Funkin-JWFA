@@ -2,7 +2,7 @@
 
 This is a Friday Night Funkin' mod based off of one of my older games John Williams' Adventure.
 
-To summarize it all, you somehow manage to spawn in through John's path to leave a studio that's infected with a big bad disease, and have a few rap battles along the way. Oh yeah, there's also some Doom stuff in there, I guess.
+To summarize it all, you somehow manage to spawn in through John's journey to leave a studio that's infected with a disease that makes people murderous and have a few rap battles along the way, somehow without catching the disease. Oh yeah, there's also some Doom stuff in there, I guess.
 
 ## Credits
 
