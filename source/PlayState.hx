@@ -767,7 +767,7 @@ class PlayState extends MusicBeatState
 			{
 				case 4: gfCheck = 'gf-car';
 				case 5: gfCheck = 'gf-christmas';
-				case 6: gfCheck = 'gf-pixel';
+				case 6 | 7: gfCheck = 'gf-pixel';
 			}
 		} else {gfCheck = SONG.gfVersion;}
 
@@ -1663,7 +1663,7 @@ class PlayState extends MusicBeatState
 				continue;
 
 			if (SONG.noteStyle == null) {
-				switch(storyWeek) {case 6: noteTypeCheck = 'pixel';}
+				switch(storyWeek) {case 6: noteTypeCheck = 'pixel'; case 7: noteTypeCheck = 'pixel';}
 			} else {noteTypeCheck = SONG.noteStyle;}
 
 			switch (noteTypeCheck)
