@@ -703,6 +703,23 @@ class PlayState extends MusicBeatState
 								add(waveSpriteFG);
 						*/
 			}
+			case 'office':
+			{
+					curStage = 'office';
+
+					var bgOffice:FlxSprite = new FlxSprite(-125, -25).loadGraphic(Paths.image('jwfa/jwfaOffice'));
+					bgOffice.scrollFactor.set(0.8,0.9);
+					bgOffice.scale.set(1.5,1.5);
+					bgOffice.antialiasing = true;
+					add(bgOffice);
+
+					bgOffice.updateHitbox();
+			}
+			case 'blank':
+			{
+					curStage = 'blank';
+					//do literally nothing lol
+			}
 			case 'stage':
 				{
 						defaultCamZoom = 0.9;
@@ -857,17 +874,16 @@ class PlayState extends MusicBeatState
 			case 'mallEvil':
 				boyfriend.x += 320;
 				dad.y -= 80;
-			case 'school':
+			case 'school' | 'schoolEvil':
 				boyfriend.x += 200;
 				boyfriend.y += 220;
 				gf.x += 180;
 				gf.y += 300;
-			case 'schoolEvil':
-
+			case 'office':
 				boyfriend.x += 200;
 				boyfriend.y += 220;
 				gf.x += 180;
-				gf.y += 300;
+				gf.y += 325;
 		}
 		switch SONG.player1
 		{
@@ -886,6 +902,10 @@ class PlayState extends MusicBeatState
 					var evilTrail = new FlxTrail(boyfriend, null, 4, 24, 0.3, 0.069);
 					add(evilTrail);
 				}
+		}
+		
+		if (SONG.player1 == 'senpai' && SONG.player2 == 'senpai') {
+			boyfriend.y = dad.y; //usually, dad's position is correct, so we'll use this for BF as well lol
 		}
 
 		if (!PlayStateChangeables.Optimize)
@@ -912,7 +932,7 @@ class PlayState extends MusicBeatState
 			PlayStateChangeables.botPlay = true;
 		}
 
-		trace('uh ' + PlayStateChangeables.safeFrames);
+		trace("Safe Frames: " + PlayStateChangeables.safeFrames);
 
 		trace("SF CALC: " + Math.floor((PlayStateChangeables.safeFrames / 60) * 1000));
 
